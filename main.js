@@ -25,7 +25,7 @@ const pAequorFactory=(specimenNum, dna)=>{
       let mutatedBase=returnRandBase()
       // e.g. if it was A, it must be changed to T, C or G, but it cannot be A again. 
       do {
-        let mutatedBase=returnRandBase()
+        mutatedBase=returnRandBase()
         }while(randBase===mutatedBase)
 
       this.dna[randBaseIndex]=mutatedBase;
@@ -68,9 +68,9 @@ const pAequorFactory=(specimenNum, dna)=>{
 // 4. test 
 const dnaStrand=mockUpStrand()
 const variation = pAequorFactory(12, dnaStrand)
-//console.log(variation.dna); // before mutation
-//console.log(variation.mutate()); 
-//console.log(variation.dna); // after mutation
+console.log(variation.dna); // before mutation
+console.log(variation.mutate()); 
+console.log(variation.dna); // after mutation
 
 // 5. test 
 const pAequor15=pAequorFactory(15, mockUpStrand());
@@ -85,4 +85,23 @@ console.log(pAequor15.dna);
 console.log(pAequor15.willLikelySurvive());
 
 
+//7. create 30 instances of pAequor and store these in an array. 
+const aequorIds=[]
 
+const createArrayOfAequor=(numOfInstances)=>{
+  const arrayAequor=[]
+  for (let i=0; i<numOfInstances; i++){
+    let specimenId=Math.floor(Math.random()*10000);
+    while(aequorIds.includes(specimenId)){
+      specimenId=Math.floor(Math.random()*1000);
+    };
+    aequorIds.push(specimenId);
+    arrayAequor.push(pAequorFactory(specimenId, mockUpStrand()));
+    i++
+  };
+  return arrayAequor
+};
+
+const array30=createArrayOfAequor(30);
+// no repeats of Ids within each execution, with multipe  function calls. There could be duplicate ids but accross different executions!
+//console.log(array30);
