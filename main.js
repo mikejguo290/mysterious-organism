@@ -62,6 +62,24 @@ const pAequorFactory=(specimenNum, dna)=>{
           return false;
         }
       },
+
+      // return the complementary DNA strand - 'A's match with 'T's and vice versa, 'G's match with 'C' and vice versa.
+    complementStrand(){
+      const complementaryStrand=[]
+      for (let base of this.dna){
+        if(base==='A'){
+          complementaryStrand.push('T');
+        }else if(base==='T'){
+          complementaryStrand.push('A')
+        }else if(base==='C'){
+          complementaryStrand.push('G')
+        }else{
+          complementaryStrand.push('C')
+        }
+      }
+      return complementaryStrand;
+    },
+
   }
 }
 
@@ -85,7 +103,7 @@ console.log(pAequor15.dna);
 console.log(pAequor15.willLikelySurvive());
 
 
-//7. create 30 instances of pAequor and store these in an array. 
+// 7. create 30 instances of pAequor and store these in an array. 
 const aequorIds=[]
 
 const createArrayOfAequor=(numOfInstances)=>{
@@ -102,6 +120,11 @@ const createArrayOfAequor=(numOfInstances)=>{
   return arrayAequor
 };
 
-const array30=createArrayOfAequor(30);
+//const array30=createArrayOfAequor(30);
 // no repeats of Ids within each execution, with multipe  function calls. There could be duplicate ids but accross different executions!
 //console.log(array30);
+
+// 9. part i . test complementStrand method
+
+console.log(pAequor15.dna);
+console.log(pAequor15.complementStrand());
