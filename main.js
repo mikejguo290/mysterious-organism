@@ -56,11 +56,8 @@ const pAequorFactory=(specimenNum, dna)=>{
         }
         // test surviveabilityScore
         //console.log(surviveabilityScore.toFixed(0));
-        if (surviveabilityScore.toFixed(0)>=60){
-          return true;
-        }else{
-          return false;
-        }
+        return (surviveabilityScore.toFixed(0)>=60);
+          
       },
 
       // return the complementary DNA strand - 'A's match with 'T's and vice versa, 'G's match with 'C' and vice versa.
@@ -86,9 +83,9 @@ const pAequorFactory=(specimenNum, dna)=>{
 // 4. test 
 const dnaStrand=mockUpStrand()
 const variation = pAequorFactory(12, dnaStrand)
-console.log(variation.dna); // before mutation
-console.log(variation.mutate()); 
-console.log(variation.dna); // after mutation
+//console.log(variation.dna); // before mutation
+//console.log(variation.mutate()); 
+//console.log(variation.dna); // after mutation
 
 // 5. test 
 const pAequor15=pAequorFactory(15, mockUpStrand());
@@ -98,33 +95,21 @@ const pAequor70=pAequorFactory(70, mockUpStrand());
 //pAequor15.compareDNA(pAequor70);
 
 // 6. test
-console.log(pAequor15.dna);
+//console.log(pAequor15.dna);
 //pAequor15.willLikelySurvive();
-console.log(pAequor15.willLikelySurvive());
+//console.log(pAequor15.willLikelySurvive());
 
 
-// 7. create 30 instances of pAequor and store these in an array. 
-const aequorIds=[]
-
-const createArrayOfAequor=(numOfInstances)=>{
-  const arrayAequor=[]
-  for (let i=0; i<numOfInstances; i++){
-    let specimenId=Math.floor(Math.random()*10000);
-    while(aequorIds.includes(specimenId)){
-      specimenId=Math.floor(Math.random()*1000);
-    };
-    aequorIds.push(specimenId);
-    arrayAequor.push(pAequorFactory(specimenId, mockUpStrand()));
-    i++
-  };
-  return arrayAequor
-};
-
-//const array30=createArrayOfAequor(30);
+/*
+const array30=createArrayOfAequor(30);
 // no repeats of Ids within each execution, with multipe  function calls. There could be duplicate ids but accross different executions!
-//console.log(array30);
 
+for (let sample of array30){
+  console.log(sample.willLikelySurvive());
+}
+console.log(array30.length);
+*/ 
 // 9. part i . test complementStrand method
 
-console.log(pAequor15.dna);
-console.log(pAequor15.complementStrand());
+//console.log(pAequor15.dna);
+//console.log(pAequor15.complementStrand());
