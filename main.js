@@ -45,6 +45,23 @@ const pAequorFactory=(specimenNum, dna)=>{
         // print statement about percentage of similarity.
         console.log(`specimen ${this.specimenNum} and specimen ${pAequor.specimenNum} have ${similarityPercent.toFixed(1)}% DNA in common.`)
       },
+
+      willLikelySurvive(){
+        // return true if objects's dna array is at least 60% of 'C' or 'G' bases. otherwise return false. 
+        let surviveabilityScore=0;
+        for (let base of this.dna){
+          if(base==='C' || base==='G'){
+            surviveabilityScore+= 100/15;
+          }
+        }
+        // test surviveabilityScore
+        //console.log(surviveabilityScore.toFixed(0));
+        if (surviveabilityScore.toFixed(0)>=60){
+          return true;
+        }else{
+          return false;
+        }
+      },
   }
 }
 
@@ -58,9 +75,14 @@ const variation = pAequorFactory(12, dnaStrand)
 // 5. test 
 const pAequor15=pAequorFactory(15, mockUpStrand());
 const pAequor70=pAequorFactory(70, mockUpStrand());
+//console.log(pAequor15.dna);
+//console.log(pAequor70.dna);
+//pAequor15.compareDNA(pAequor70);
+
+// 6. test
 console.log(pAequor15.dna);
-console.log(pAequor70.dna);
-pAequor15.compareDNA(pAequor70);
+//pAequor15.willLikelySurvive();
+console.log(pAequor15.willLikelySurvive());
 
 
 
