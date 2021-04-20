@@ -31,18 +31,36 @@ const pAequorFactory=(specimenNum, dna)=>{
       this.dna[randBaseIndex]=mutatedBase;
       return this.dna;
       },
+
+      compareDNA(pAequor){
+        // compare current pAequor dna with the passed in pAequor's dna (identified with specimenNum). compute how many bases are idental and in the same locations. 
+        
+        // if a base in position i is the same across two pAequor, add 100/15% to similarityPercent.
+        let similarityPercent=0;
+        for (let i=0; i<this.dna.length; i++){
+          if (this.dna[i]===pAequor.dna[i]){
+            similarityPercent+=100/15;
+          };
+        };
+        // print statement about percentage of similarity.
+        console.log(`specimen ${this.specimenNum} and specimen ${pAequor.specimenNum} have ${similarityPercent.toFixed(1)}% DNA in common.`)
+      },
   }
 }
 
-// 3. test 
+// 4. test 
 const dnaStrand=mockUpStrand()
-//console.log(dnaStrand)
 const variation = pAequorFactory(12, dnaStrand)
-console.log(variation.dna);
-//console.log(variation.mutate());
-console.log(variation.dna);
+//console.log(variation.dna); // before mutation
+//console.log(variation.mutate()); 
+//console.log(variation.dna); // after mutation
 
-
+// 5. test 
+const pAequor15=pAequorFactory(15, mockUpStrand());
+const pAequor70=pAequorFactory(70, mockUpStrand());
+console.log(pAequor15.dna);
+console.log(pAequor70.dna);
+pAequor15.compareDNA(pAequor70);
 
 
 
